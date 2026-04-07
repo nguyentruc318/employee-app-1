@@ -1,0 +1,37 @@
+{
+  "login": {
+    "name": "username",
+    "password": "password",
+    "login": "login",
+    "loginWithGoogle": "login with google",
+    "loginWithFacebook": "login with facebook"
+  },
+  "employee": {
+    "noEmployeeFound": "No employee found",
+    "add": "add employee",
+    "edit": "edit",
+    "delete": "delete",
+    "search": "search",
+    "form": {
+      "placeholderName": "name",
+      "placeholderAge": "age",
+      "placeholderPhone": "phone",
+      "placeholderCountry": "country",
+      "isAvailable": "available",
+      "create": "create",
+      "update": "update",
+      "labelName": "name",
+      "labelAge": "age",
+      "labelPhone": "phone",
+      "labelCountry": "country"
+    },
+    "table": {
+      "headerName": "Name",
+      "headerAge": "Age",
+      "headerPhone": "Phone",
+      "headerCountry": "Country",
+      "headerIsAvailable": "Available",
+      "headerActions": "Actions"
+    }
+  }
+}

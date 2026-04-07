@@ -1,0 +1,43 @@
+{
+  "login": {
+    "name": "Tên đăng nhập ",
+    "password": "Mật khẩu",
+    "login": "Đăng nhập",
+    "loginWithGoogle": "Đăng nhập với Google",
+    "loginWithFacebook": "Đăng nhập với Facebook"
+  },
+  "employee": {
+    "noEmployeeFound": "Không tìm thấy nhân viên",
+    "add": "Thêm nhân viên",
+    "edit": "Sửa",
+    "delete": "Xóa",
+    "search": "Tìm kiếm",
+    "form": {
+      "placeholderName": "Tên",
+      "placeholderAge": "Tuổi",
+      "placeholderPhone": "Số điện thoại",
+      "placeholderCountry": "Quốc gia",
+      "isAvailable": "Có sẵn",
+      "create": "Tạo",
+      "update": "Cập nhật",
+      "labelName": "Tên",
+      "labelAge": "Tuổi",
+      "labelPhone": "Số điện thoại",
+      "labelCountry": "Quốc gia"
+    },
+    "table": {
+      "headerName": "Tên",
+      "headerAge": "Tuổi",
+      "headerPhone": "Số điện thoại",
+      "headerCountry": "Quốc gia",
+      "headerIsAvailable": "Có sẵn",
+      "headerActions": "Hành động"
+    }
+  },
+  "error": {
+    "minAge": "Tuổi phải lớn hơn 18",
+    "Phone": "Số điện thoại không được để trống",
+    "Country": "Quốc gia không được để trống",
+    "Name": "Tên không được để trống"
+  }
+}
