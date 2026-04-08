@@ -33,11 +33,5 @@
       "headerIsAvailable": "Có sẵn",
       "headerActions": "Hành động"
     }
-  },
-  "error": {
-    "minAge": "Tuổi phải lớn hơn 18",
-    "Phone": "Số điện thoại không được để trống",
-    "Country": "Quốc gia không được để trống",
-    "Name": "Tên không được để trống"
   }
 }

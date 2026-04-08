@@ -1,3 +1,3 @@
-export const genAvatar = (arrayLength: number) => {
-  return `https://i.pravatar.cc/150?u=${arrayLength}`;
+export const genAvatar = (u: number | string) => {
+  return `https://i.pravatar.cc/150?u=${u}`;
 };

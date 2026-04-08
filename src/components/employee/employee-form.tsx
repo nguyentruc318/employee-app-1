@@ -11,7 +11,7 @@ interface EmployeeFormProps {
 const validateForm = (data: Omit<Employee, "id">) => {
   const errors: Record<string, string> = {};
   if (!data.name.trim()) errors.name = "Tên không được để trống";
-  if (data.age < 18 || data.age > 100) errors.age = "Tuổi phải từ 18 ";
+  if (data.age < 18) errors.age = "Tuổi phải từ 18";
   if (!data.phone.match(/^[0-9]{10}$/))
     errors.phone = "Số điện thoại phải chứa 10 chữ số";
   if (!data.country.trim()) errors.country = "Quốc gia không được để trống";
