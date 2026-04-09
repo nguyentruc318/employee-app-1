@@ -62,9 +62,6 @@ export default function EmployeeList() {
       socket.off("employee_changed", handleEmployeeChange);
     };
   }, [fetchEmployee]);
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
 
   const handleOpenAddForm = () => {
     setIsOpenForm(true);
@@ -124,7 +121,14 @@ export default function EmployeeList() {
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-4 mx-2 sm:mx-10 lg:mx-15 mt-5 gap-6 mb-5">
           <div className="lg:col-span-3 order-2 lg:order-1">
-            {employees.length > 0 ? (
+            {isLoading && employees.length === 0 ? (
+              <div className="flex flex-col items-center justify-center py-20 bg-white/30 backdrop-blur-md rounded-2xl border border-white/20">
+                <div className="w-12 h-12 border-4 border-green-600 border-t-transparent rounded-full animate-spin mb-4"></div>
+                <p className="text-green-800 font-medium animate-pulse">
+                  {t("common.loading") || "Loading employees..."}
+                </p>
+              </div>
+            ) : employees.length > 0 ? (
               <>
                 <div className="hidden lg:block">
                   <EmployeeTable
@@ -142,7 +146,9 @@ export default function EmployeeList() {
                 </div>
               </>
             ) : (
-              <div>{t("employee.noEmployeeFound")}</div>
+              <div className="bg-white/50 backdrop-blur-sm p-10 rounded-2xl text-center text-gray-600 border border-white/20">
+                {t("employee.noEmployeeFound")}
+              </div>
             )}
           </div>
 
