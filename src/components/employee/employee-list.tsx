@@ -1,12 +1,16 @@
 import { useCallback, useEffect, useState } from "react";
-import type { Employee, SocketEmployeeEvent } from "../../types/employee.type";
+import type {
+  Employee,
+  EmployeeBodyType,
+  SocketEmployeeEvent,
+} from "../../types/employee.type";
 import employeeApi from "../../services/employee.service";
 import EmployeeTable from "./employee-table";
 import Button from "../button";
 import EmployeeForm from "./employee-form";
 import { genAvatar } from "../../utils/generate-avatar";
 import EmployeeSearch from "./employee-search";
-import socket from "../../utils/socket";
+import socket from "../../configs/socket";
 import toast from "react-hot-toast";
 import EmployeeCard from "./employee-card";
 import { useTranslation } from "react-i18next";
@@ -85,7 +89,7 @@ export default function EmployeeList() {
       console.log(error);
     }
   };
-  const handleSubmit = async (data: Omit<Employee, "id">) => {
+  const handleSubmit = async (data: EmployeeBodyType) => {
     try {
       if (selectedEmployee) {
         await employeeApi.update(selectedEmployee.id, data);

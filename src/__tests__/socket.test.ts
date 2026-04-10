@@ -1,5 +1,5 @@
 import { io } from "socket.io-client";
-import "./socket";
+import "../configs/socket";
 vi.mock("socket.io-client");
 
 describe("Socket Utility", () => {

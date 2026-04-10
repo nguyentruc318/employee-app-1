@@ -1,13 +1,18 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import EmployeePage from "./pages/employee-page";
 import LoginPage from "./pages/login-page";
+import Authguard from "./guards/protected-route";
 
 function App() {
   return (
     <Routes>
-      <Route path="/employee" element={<EmployeePage />} />
+      <Route element={<Authguard />}>
+        <Route path="/employee" element={<EmployeePage />} />
+      </Route>
       <Route path="/" element={<Navigate to="/employee" replace />} />
-      <Route path="/login" element={<LoginPage />} />
+      <Route element={<Authguard reverse />}>
+        <Route path="/login" element={<LoginPage />} />
+      </Route>
     </Routes>
   );
 }

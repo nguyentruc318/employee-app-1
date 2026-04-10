@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Button from "../button";
 import useGoogleOAuth from "../../hooks/use-google-oauth";
 import type { AuthUser } from "../../types/employee.type";
@@ -6,55 +5,75 @@ import { useAppStore } from "../../stores";
 import { useNavigate } from "react-router-dom";
 import FacebookLogin from "@greatsumini/react-facebook-login";
 import { useTranslation } from "react-i18next";
+import { LoginSchema, type LoginBodyType } from "../../types/auth.type";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { cn } from "../../utils/cn";
+
 const FacebookLoginComponent = (FacebookLogin as any).default;
+
 export default function LoginForm() {
   const { loginWithGoogle } = useGoogleOAuth();
   const login = useAppStore((s) => s.login);
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const [formData, setFormData] = useState({
-    name: "",
-    password: "",
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginBodyType>({
+    resolver: zodResolver(LoginSchema),
+    mode: "onSubmit",
+    reValidateMode: "onChange",
+    defaultValues: {
+      name: "",
+      password: "",
+    },
   });
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log(formData);
+  const onSubmit = (data: LoginBodyType) => {
+    console.log(data);
     navigate("/");
   };
+
   return (
     <form
-      onSubmit={handleSubmit}
+      onSubmit={handleSubmit(onSubmit)}
       className="flex flex-col gap-4 w-full max-w-md bg-gray-100 rounded-2xl px-6 py-8 mx-auto mt-10 sm:mt-20"
     >
       <div className="flex flex-col gap-2">
         <label htmlFor="name">{t("login.name")}</label>
         <input
-          onChange={handleChange}
-          value={formData.name}
-          name="name"
+          {...register("name")}
           placeholder={t("login.name")}
           type="text"
-          className="border border-gray-300 rounded-md px-2 py-1 h-12 text-sm bg-white"
+          className={cn(
+            "border rounded-md px-2 py-1 h-12 text-sm bg-white",
+            errors.name ? "border-red-500" : "border-gray-300",
+          )}
         />
+        {errors.name && (
+          <span className="text-red-500 text-xs">{errors.name.message}</span>
+        )}
       </div>
+
       <div className="flex flex-col gap-2">
         <label htmlFor="password">{t("login.password")}</label>
         <input
-          onChange={handleChange}
+          {...register("password")}
           placeholder="********"
-          value={formData.password}
-          name="password"
           type="password"
-          className="border border-gray-300 rounded-md px-2 py-1 h-12 text-sm bg-white"
+          className={cn(
+            "border rounded-md px-2 py-1 h-12 text-sm bg-white",
+            errors.password ? "border-red-500" : "border-gray-300",
+          )}
         />
+        {errors.password && (
+          <span className="text-red-500 text-xs">
+            {errors.password.message}
+          </span>
+        )}
       </div>
+
       <Button type="submit">{t("login.login")}</Button>
       <Button type="button" variant="outline" onClick={() => loginWithGoogle()}>
         {t("login.loginWithGoogle")}

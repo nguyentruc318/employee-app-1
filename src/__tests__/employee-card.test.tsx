@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import { describe } from "vitest";
-import EmployeeCard from "./employee-card";
-import type { Employee } from "../../types/employee.type";
+import EmployeeCard from "../components/employee/employee-card";
+import type { Employee } from "../types/employee.type";
 
 describe("Employee Card Component", () => {
   it("should not render employee card when employee is empty", () => {

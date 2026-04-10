@@ -1,10 +1,10 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, it, expect, vi, beforeEach, type Mock } from "vitest";
-import EmployeeList from "./employee-list";
-import employeeApi from "../../services/employee.service";
-import type { Employee } from "../../types/employee.type";
-import socket from "../../utils/socket";
+import EmployeeList from "../components/employee/employee-list";
+import employeeApi from "../services/employee.service";
+import type { Employee } from "../types/employee.type";
+import socket from "../configs/socket";
 
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key }),

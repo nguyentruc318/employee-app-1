@@ -1,4 +1,4 @@
-import { genAvatar } from "./generate-avatar";
+import { genAvatar } from "../utils/generate-avatar";
 
 describe("genAvatar utiltity", () => {
   it("should generate correct URL with a positive number ", () => {

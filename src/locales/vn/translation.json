@@ -32,6 +32,9 @@
       "headerCountry": "Quốc gia",
       "headerIsAvailable": "Có sẵn",
       "headerActions": "Hành động"
+    },
+    "common": {
+      "loading": "Đang tải"
     }
   }
 }

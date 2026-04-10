@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import LoginForm from "./login-form";
+import LoginForm from "../components/login/login-form";
 import userEvent from "@testing-library/user-event";
 
 const mockNavigate = vi.fn();

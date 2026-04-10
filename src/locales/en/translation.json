@@ -32,6 +32,9 @@
       "headerCountry": "Country",
       "headerIsAvailable": "Available",
       "headerActions": "Actions"
+    },
+    "common": {
+      "loading": "Loading"
     }
   }
 }

@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, it, expect, vi } from "vitest";
-import EmployeeRow from "./employee-row";
-import type { Employee } from "../../types/employee.type";
+import EmployeeRow from "../components/employee/employee-row";
+import type { Employee } from "../types/employee.type";
 
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key }),

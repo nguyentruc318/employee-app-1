@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, it } from "vitest";
-import LanguageSwitcher from "./language-switcher";
+import LanguageSwitcher from "../components/language-switcher";
 import userEvent from "@testing-library/user-event";
 
 const mockChangeLanguage = vi.fn();

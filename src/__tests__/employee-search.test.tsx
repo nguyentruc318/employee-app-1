@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe } from "vitest";
-import EmployeeSearch from "./employee-search";
+import EmployeeSearch from "../components/employee/employee-search";
 import userEvent from "@testing-library/user-event";
 
 vi.mock("react-i18next", () => ({

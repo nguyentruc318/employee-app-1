@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, it, expect, vi } from "vitest";
-import EmployeeForm from "./employee-form";
-import type { Employee } from "../../types/employee.type";
+import EmployeeForm from "../components/employee/employee-form";
+import type { Employee } from "../types/employee.type";
 
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({
