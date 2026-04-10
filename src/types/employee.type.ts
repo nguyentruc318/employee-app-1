@@ -21,19 +21,23 @@ export interface SocketEmployeeEvent {
   name: string;
 }
 export const EmployeeSchema = z.object({
-  name: z.string().min(1, "Name is required").max(50, "Name too long").trim(),
+  name: z
+    .string()
+    .min(1, "validation.nameRequired")
+    .max(50, "validation.nameTooLong")
+    .trim(),
   age: z
-    .number("Age must be a number")
-    .nonnegative("Age must be a non-negative number")
-    .min(18, "Age must be at least 18"),
+    .number({ error: "validation.ageRequired" })
+    .nonnegative("validation.ageNegative")
+    .min(18, "validation.ageMin"),
   phone: z
     .string()
-    .min(10, "Phone must be at least 10 digits")
-    .max(10, "Phone too long"),
+    .min(10, "validation.phoneRequired")
+    .max(10, "validation.phoneRequired"),
   country: z
     .string()
-    .min(1, "Country is required")
-    .max(50, "Country too long")
+    .min(1, "validation.countryRequired")
+    .max(50, "validation.countryTooLong")
     .trim(),
   isAvailable: z.boolean(),
   avatar: z.string().optional(),

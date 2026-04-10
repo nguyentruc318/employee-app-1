@@ -15,14 +15,13 @@ vi.mock("react-router-dom", () => ({
 vi.mock("axios", () => ({
   post: vi.fn(),
 }));
-vi.mock("../../stores", () => ({
+vi.mock("../stores", () => ({
   useAppStore: (selector: any) => selector({ login: mockLogin }),
 }));
-vi.mock("../../hooks/use-google-oauth", () => ({
+vi.mock("../hooks/use-google-oauth", () => ({
   default: () => ({ loginWithGoogle: mockLoginWithGoogle }),
 }));
 vi.mock("@greatsumini/react-facebook-login", () => {
-  // 1. Định nghĩa component giả ở đây
   const MockFB = ({ onProfileSuccess, render }: any) => (
     <div data-testid="mock-fb">
       {render({
@@ -37,7 +36,7 @@ vi.mock("@greatsumini/react-facebook-login", () => {
     },
   };
 });
-vi.mock("../button", () => ({
+vi.mock("../components/button", () => ({
   default: ({ children, onClick, type }: any) => (
     <button type={type} onClick={onClick}>
       {children}
@@ -59,16 +58,33 @@ describe("Login Form Component", () => {
       screen.getByRole("button", { name: "login.loginWithFacebook" }),
     ).toBeInTheDocument();
   });
+
+  it("should show validation errors when fields are empty", async () => {
+    render(<LoginForm />);
+    const loginButton = screen.getByRole("button", { name: "login.login" });
+    await userEvent.click(loginButton);
+
+    expect(
+      await screen.findByText("validation.nameRequired"),
+    ).toBeInTheDocument();
+    expect(
+      await screen.findByText("validation.passwordMin"),
+    ).toBeInTheDocument();
+  });
+
   it("should navigate to home page when user login successfully", async () => {
     render(<LoginForm />);
-    const nameInput = screen.getByText("login.name");
-    const passwordInput = screen.getByText("login.password");
+    const nameInput = screen.getByLabelText("login.name");
+    const passwordInput = screen.getByLabelText("login.password");
     const loginButton = screen.getByRole("button", { name: "login.login" });
-    await userEvent.type(nameInput, "Felix");
-    await userEvent.type(passwordInput, "123456");
+
+    await userEvent.type(nameInput, "Felix Test");
+    await userEvent.type(passwordInput, "Password123!");
     await userEvent.click(loginButton);
+
     expect(mockNavigate).toHaveBeenCalledWith("/");
   });
+
   it("should update the value when the user types in the Name and Password", async () => {
     render(<LoginForm />);
 
@@ -76,9 +92,9 @@ describe("Login Form Component", () => {
     const passwordInput = screen.getByPlaceholderText("********");
 
     await userEvent.type(nameInput, "Felix");
-    await userEvent.type(passwordInput, "123456");
+    await userEvent.type(passwordInput, "Password123!");
 
     expect(nameInput).toHaveValue("Felix");
-    expect(passwordInput).toHaveValue("123456");
+    expect(passwordInput).toHaveValue("Password123!");
   });
 });

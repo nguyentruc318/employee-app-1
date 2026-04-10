@@ -36,5 +36,27 @@
     "common": {
       "loading": "Loading"
     }
+  },
+  "validation": {
+    "nameRequired": "Name is required",
+    "nameTooLong": "Name is too long",
+    "ageRequired": "Age must be a number",
+    "ageNegative": "Age cannot be negative",
+    "ageMin": "Age must be at least 18",
+    "phoneRequired": "Phone must be 10 digits",
+    "phoneTooLong": "Phone is too long",
+    "countryRequired": "Country is required",
+    "countryTooLong": "Country name is too long",
+    "passwordRequired": "Password is required",
+    "passwordMin": "Password must be at least 8 characters",
+    "passwordUppercase": "Password must have at least 1 uppercase letter",
+    "passwordLowercase": "Password must have at least 1 lowercase letter",
+    "passwordNumber": "Password must have at least 1 number",
+    "passwordSpecial": "Password must have at least 1 special character"
+  },
+  "not_found": {
+    "title": "Page Not Found",
+    "description": "Sorry, the page you are looking for does not exist or has been moved.",
+    "back_home": "Back to Home"
   }
 }

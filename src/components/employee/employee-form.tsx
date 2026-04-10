@@ -13,7 +13,6 @@ interface EmployeeFormProps {
   onSubmit: (data: EmployeeBodyType) => void;
   initialData: Employee | null;
 }
-
 export default function EmployeeForm({
   onClose,
   onSubmit,
@@ -61,7 +60,9 @@ export default function EmployeeForm({
             className="border border-gray-300 rounded-md px-2 py-1 h-12 text-sm bg-white"
           />
           {errors.name && (
-            <span className="text-red-500 text-xs">{errors.name.message}</span>
+            <span className="text-red-500 text-xs">
+              {t(errors.name.message!)}
+            </span>
           )}
         </div>
         <div className=" flex flex-col gap-1">
@@ -75,7 +76,7 @@ export default function EmployeeForm({
             className="border border-gray-300 rounded-md px-2 py-1 h-12 text-sm bg-white"
           />
           {errors.age && (
-            <p className="text-red-500 text-sm">{errors.age.message}</p>
+            <p className="text-red-500 text-sm">{t(errors.age.message!)}</p>
           )}
         </div>
         <div className=" flex flex-col gap-1">
@@ -89,7 +90,7 @@ export default function EmployeeForm({
             className="border border-gray-300 rounded-md px-2 py-1 h-12 text-sm bg-white"
           />
           {errors.phone && (
-            <p className="text-red-500 text-sm">{errors.phone.message}</p>
+            <p className="text-red-500 text-sm">{t(errors.phone.message!)}</p>
           )}
         </div>
         <div className="sm:col-span-2 flex flex-col gap-1">
@@ -103,7 +104,7 @@ export default function EmployeeForm({
             className="sm:col-span-2 border border-gray-300 rounded-md px-2 py-1 h-12 text-sm bg-white"
           />
           {errors.country && (
-            <p className="text-red-500 text-sm">{errors.country.message}</p>
+            <p className="text-red-500 text-sm">{t(errors.country.message!)}</p>
           )}
         </div>
         <div className="flex items-center gap-3">

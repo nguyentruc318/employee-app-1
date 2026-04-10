@@ -36,5 +36,27 @@
     "common": {
       "loading": "Đang tải"
     }
+  },
+  "validation": {
+    "nameRequired": "Tên không được để trống",
+    "nameTooLong": "Tên quá dài",
+    "ageRequired": "Tuổi phải là một số",
+    "ageNegative": "Tuổi không được là số âm",
+    "ageMin": "Tuổi phải từ 18 trở lên",
+    "phoneRequired": "Số điện thoại phải có 10 chữ số",
+    "phoneTooLong": "Số điện thoại quá dài",
+    "countryRequired": "Quốc gia không được để trống",
+    "countryTooLong": "Tên quốc gia quá dài",
+    "passwordRequired": "Mật khẩu là bắt buộc",
+    "passwordMin": "Mật khẩu phải có ít nhất 8 ký tự",
+    "passwordUppercase": "Mật khẩu phải có ít nhất 1 chữ cái viết hoa",
+    "passwordLowercase": "Mật khẩu phải có ít nhất 1 chữ cái viết thường",
+    "passwordNumber": "Mật khẩu phải có ít nhất 1 chữ số",
+    "passwordSpecial": "Mật khẩu phải có ít nhất 1 ký tự đặc biệt"
+  },
+  "not_found": {
+    "title": "Không tìm thấy trang",
+    "description": "Xin lỗi, trang bạn đang tìm kiếm không tồn tại hoặc đã bị di chuyển.",
+    "back_home": "Quay về trang chủ"
   }
 }

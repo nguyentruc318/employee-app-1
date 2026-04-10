@@ -3,6 +3,10 @@ import { describe } from "vitest";
 import EmployeeCard from "../components/employee/employee-card";
 import type { Employee } from "../types/employee.type";
 
+vi.mock("react-i18next", () => ({
+  useTranslation: () => ({ t: (key: string) => key }),
+}));
+
 describe("Employee Card Component", () => {
   it("should not render employee card when employee is empty", () => {
     const { container } = render(

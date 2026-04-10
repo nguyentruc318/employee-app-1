@@ -91,7 +91,9 @@ describe("Employee Component", () => {
       });
       await userEvent.click(submitButton);
       expect(mockOnSubmit).not.toHaveBeenCalled();
-      expect(screen.getByText("Tên không được để trống")).toBeInTheDocument();
+      expect(
+        await screen.findByText("validation.nameRequired"),
+      ).toBeInTheDocument();
     });
 
     it("can not submit when phone is empty", async () => {
@@ -108,9 +110,10 @@ describe("Employee Component", () => {
       await userEvent.click(submitButton);
       expect(mockOnSubmit).not.toHaveBeenCalled();
       expect(
-        screen.getByText("Số điện thoại phải chứa 10 chữ số"),
+        await screen.findByText("validation.phoneRequired"),
       ).toBeInTheDocument();
     });
+
     it("can not submit when country is empty", async () => {
       render(
         <EmployeeForm
@@ -125,9 +128,10 @@ describe("Employee Component", () => {
       await userEvent.click(submitButton);
       expect(mockOnSubmit).not.toHaveBeenCalled();
       expect(
-        screen.getByText("Quốc gia không được để trống"),
+        await screen.findByText("validation.countryRequired"),
       ).toBeInTheDocument();
     });
+
     it("can not submit when age is less than 18", async () => {
       render(
         <EmployeeForm
@@ -144,7 +148,7 @@ describe("Employee Component", () => {
       await userEvent.type(ageInput, "17");
       await userEvent.click(submitButton);
       expect(mockOnSubmit).not.toHaveBeenCalled();
-      expect(screen.getByText("Tuổi phải từ 18")).toBeInTheDocument();
+      expect(await screen.findByText("validation.ageMin")).toBeInTheDocument();
     });
     it("should toggle isAvailable checkbox", async () => {
       render(
@@ -188,6 +192,7 @@ describe("Employee Component", () => {
       );
       expect(mockOnSubmit).toHaveBeenCalledWith(
         expect.objectContaining({ name: "Zeus" }),
+        expect.anything(),
       );
     });
     it("should submit when form is valid", async () => {

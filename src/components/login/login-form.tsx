@@ -44,6 +44,7 @@ export default function LoginForm() {
         <label htmlFor="name">{t("login.name")}</label>
         <input
           {...register("name")}
+          id="name"
           placeholder={t("login.name")}
           type="text"
           className={cn(
@@ -52,7 +53,9 @@ export default function LoginForm() {
           )}
         />
         {errors.name && (
-          <span className="text-red-500 text-xs">{errors.name.message}</span>
+          <span className="text-red-500 text-xs">
+            {t(errors.name.message!)}
+          </span>
         )}
       </div>
 
@@ -60,6 +63,7 @@ export default function LoginForm() {
         <label htmlFor="password">{t("login.password")}</label>
         <input
           {...register("password")}
+          id="password"
           placeholder="********"
           type="password"
           className={cn(
@@ -69,7 +73,7 @@ export default function LoginForm() {
         />
         {errors.password && (
           <span className="text-red-500 text-xs">
-            {errors.password.message}
+            {t(errors.password.message!)}
           </span>
         )}
       </div>

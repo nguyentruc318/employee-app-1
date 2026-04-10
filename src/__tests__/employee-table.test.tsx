@@ -7,7 +7,7 @@ vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key }),
 }));
 
-vi.mock("./employee-row", () => ({
+vi.mock("../components/employee/employee-row", () => ({
   default: ({ employee }: { employee: Employee }) => (
     <tr data-testid="mock-row">
       <td>{employee.name}</td>

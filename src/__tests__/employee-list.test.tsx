@@ -9,7 +9,7 @@ import socket from "../configs/socket";
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key }),
 }));
-vi.mock("../../services/employee.service", () => ({
+vi.mock("../services/employee.service", () => ({
   default: {
     list: vi.fn(),
     create: vi.fn(),
@@ -17,13 +17,13 @@ vi.mock("../../services/employee.service", () => ({
     delete: vi.fn(),
   },
 }));
-vi.mock("../../utils/socket", () => ({
+vi.mock("../configs/socket", () => ({
   default: { on: vi.fn(), off: vi.fn(), emit: vi.fn() },
 }));
 vi.mock("react-hot-toast", () => ({
   default: { success: vi.fn() },
 }));
-vi.mock("./employee-table", () => ({
+vi.mock("../components/employee/employee-table", () => ({
   default: ({ employees, onEdit, onDelete }: any) => (
     <div>
       {employees.map((e: Employee) => (
@@ -36,7 +36,7 @@ vi.mock("./employee-table", () => ({
     </div>
   ),
 }));
-vi.mock("./employee-card", () => ({
+vi.mock("../components/employee/employee-card", () => ({
   default: ({ employees }: { employees: Employee[] }) => (
     <div>
       {employees.map((e: Employee) => (
@@ -45,7 +45,7 @@ vi.mock("./employee-card", () => ({
     </div>
   ),
 }));
-vi.mock("../language-switcher", () => ({
+vi.mock("../components/language-switcher", () => ({
   default: () => <div />,
 }));
 const fakeEmployees: Employee[] = [
@@ -144,7 +144,7 @@ describe("Employee List Component", () => {
     expect(employeeApi.create).toHaveBeenCalledWith(
       expect.objectContaining({
         name: "Hehe",
-        age: "30",
+        age: 30,
         phone: "0123456789",
         country: "Asgard",
         isAvailable: false,
